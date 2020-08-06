@@ -21,7 +21,16 @@ jobs:
           prefix: coverage
       - store_test_results:
           path: test-results.xml
-           filters:
-             branches:
+
+
+
+workflows:
+  version: 2
+  build:    
+    jobs:
+      - build:
+          filters:
+            branches:
               only:
+                - development
                 - master
