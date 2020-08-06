@@ -10,13 +10,15 @@ jobs:
       - run:
           name: install dependencies
           command: npm install
-      - save_cache:
-          key: dependency-cache-{{ checksum "package.json"}}
-          paths:
-            - ./node_modules
       - run:
-          name: test
-          command: npm run lint && npm test && npm run codecov
+          name: test lint
+          command: npm run lint 
+      - run:
+          name: npm test
+          command: npm test
+      - run : 
+          name: run codecov
+          command: npm run codecov  
       - store_artifacts:
           path: test-results.xml
           prefix: tests
@@ -25,6 +27,5 @@ jobs:
           prefix: coverage
       - store_test_results:
           path: test-results.xml
-      - run:
-          name: upload to codecov
-          command: bash <(curl -s https://codecov.io/bash)
+
+
