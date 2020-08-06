@@ -4,6 +4,7 @@ jobs:
      branches:
       only:
         - master
+        - /test-.*/
     docker:
       - image: circleci/node:8.11.4
     steps:
@@ -24,6 +25,3 @@ jobs:
           prefix: coverage
       - store_test_results:
           path: test-results.xml
-      - run:
-          name: upload to codecov
-          command: bash <(curl -s https://codecov.io/bash)
