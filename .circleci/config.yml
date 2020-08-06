@@ -1,6 +1,9 @@
 version: 2
 jobs:
   build:
+     branches:
+      only:
+        - master
     docker:
       - image: circleci/node:8.11.4
     steps:
@@ -10,10 +13,6 @@ jobs:
       - run:
           name: install dependencies
           command: npm install
-      - save_cache:
-          key: dependency-cache-{{ checksum "package.json"}}
-          paths:
-            - ./node_modules
       - run:
           name: test
           command: npm run lint && npm test && npm run codecov
