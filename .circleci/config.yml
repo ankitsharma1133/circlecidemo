@@ -21,8 +21,7 @@ jobs:
           prefix: coverage
       - store_test_results:
           path: test-results.xml
-      - build_dev:
-          filters:
-            branches:
+           filters:
+             branches:
               only:
                 - master
