@@ -1,6 +1,6 @@
 version: 2
 jobs:
-  build_all:
+  build:
     docker:
       - image: circleci/node:8.11.4
     steps:
